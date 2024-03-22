@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  my_app:
+    build: .
+    ports:
+      - "8089:8089"
+    volumes:
+      - .:/app
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8089"]
