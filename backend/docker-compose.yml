@@ -1,10 +1,11 @@
 version: "3.8"
 
 services:
-  my_app:
+  app:
     build: .
     ports:
       - "8089:8089"
     volumes:
-      - .:/app
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8089"]
+      - .:/code
+      - /data/desi:/data/desi
+    command: bash -c "uvicorn main:app --reload --port 8089 --host 0.0.0.0"
